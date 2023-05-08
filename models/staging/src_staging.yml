@@ -24,5 +24,7 @@ models:
           - name: chargeback
             description: This returns a boolean based on if a chargeback has occured
             tests:
-              - not_null        
+              - not_null     
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: boolean
           
