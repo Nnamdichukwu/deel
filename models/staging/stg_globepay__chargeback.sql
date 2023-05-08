@@ -3,7 +3,7 @@ with source as (
         external_ref,
         status,
         source, 
-        chargeback 
+        chargeback as is_chargeback
     from 
         {{ source('deel', 'globapay_chargeback') }}
 )
