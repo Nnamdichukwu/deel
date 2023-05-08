@@ -21,7 +21,7 @@ models:
             tests:
               - unique
               - not_null
-          - name: chargeback
+          - name: is_chargeback
             description: This returns a boolean based on if a chargeback has occured
             tests:
               - not_null     
