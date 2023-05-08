@@ -23,4 +23,4 @@ models:
   deel:
     staging:
       materialized: view
-      +schema: staging 
+     
