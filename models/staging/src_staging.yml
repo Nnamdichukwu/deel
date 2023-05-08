@@ -1,0 +1,29 @@
+version: 2
+
+models:
+      - name: stg_globepay__acceptance_reportstransactions
+        description: This is a fact table that keeps track of all orders processed by globepay
+        columns:
+          - name: ref
+            tests:
+              - unique
+              - not_null
+          - name: external_ref
+            tests:
+              - not_null
+              - unique_key
+              
+            
+      - name: stg_globepay__chargeback
+        description: This a dim table that keeps track of all chargebacks
+        columns:
+          - name: external_ref
+            tests:
+              - unique
+              - not_null
+          - name: chargeback
+            description: This returns a boolean based on if a chargeback has occured
+            tests:
+              - not_null
+              - accepted_values:
+                  values: [true,false]

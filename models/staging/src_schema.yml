@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: deel
+    description: This is a source connector to bigquery
+    schema: deel_assessment
+    tables:
+      - name: globapay_chargeback
+        description: This is a dim table that keeps track of all chargeback transactions
+        
+      - name: globepay_acceptance_report
+        description: This is a fact table of globepay transactions
+    #making the assumption that we expect at least one transaction every 24 hours
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+          filter: date_diff( date_time, current_timestamp, day)>2
+        loaded_at_field: date_time
+
+
+
+
+
+
+
+
+
+
